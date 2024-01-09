@@ -1,0 +1,11 @@
+Si activas el plugin, lo desactivas, y luego modificas el código para quitar la capacidad de lectura y añadir otra capacidad, esto es lo que sucederá:
+
+1. **Activación Inicial del Plugin**: Al activar el plugin por primera vez, se crea el rol de "alumno" con las capacidades definidas en ese momento en el código (por ejemplo, la capacidad de lectura).
+
+2. **Desactivación del Plugin**: Al desactivar el plugin, no se realiza ninguna acción sobre el rol de "alumno" ni sobre sus capacidades. El rol permanece en el sistema con las capacidades asignadas durante la activación.
+
+3. **Modificación del Código del Plugin**: Si luego editas el código del plugin para eliminar la capacidad de lectura (`'read' => true`) y añades una nueva capacidad (por ejemplo, `'edit_posts' => true`), estas modificaciones afectarán las capacidades del rol de "alumno".
+
+4. **Reactivación del Plugin**: Al reactivar el plugin después de estas modificaciones, la función `jlmr_create_or_update_alumno_role` verificará si el rol de "alumno" ya existe. Como ya existe, el plugin actualizará sus capacidades según las nuevas definiciones en el código. En este caso, eliminará la capacidad de lectura y añadirá la nueva capacidad que hayas definido.
+
+Así, cada vez que el plugin se reactive después de haber sido modificado, actualizará las capacidades del rol de "alumno" para reflejar los cambios realizados en el código del plugin.
